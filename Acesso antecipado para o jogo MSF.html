@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>MSF | Acesso Antecipado</title>
+
+<style>
+:root {
+  --bg: #0b101a;
+  --panel: #151e2d;
+  --panel2: #1c293b;
+  --blue: #142d50;
+  --red: #e51c2a;
+  --white: #f8fafc;
+  --muted: #aab5c5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+header {
+  background: #101827;
+  border-bottom: 1px solid #29374a;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 19px;
+}
+
+.brand span { color: var(--red); }
+
+.studio {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.hero {
+  text-align: center;
+  padding: 48px 20px 35px;
+  background:
+    radial-gradient(ellipse at top, #203b60 0%, #101827 60%);
+}
+
+.logo {
+  width: min(620px, 90%);
+  max-height: 250px;
+  object-fit: contain;
+  margin-bottom: 25px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #451b27;
+  color: #ff6872;
+  border: 1px solid #9b2638;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.hero h1 span { color: var(--red); }
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: #c0cad8;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 30px auto 0;
+}
+
+.stat {
+  background: #17263a;
+  border: 1px solid #344965;
+  padding: 18px 30px;
+  border-radius: 12px;
+  min-width: 155px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 27px;
+  color: #ff3948;
+  margin-bottom: 5px;
+}
+
+.stat small { color: #b9c6d7; }
+
+main {
+  width: min(700px, 92%);
+  margin: 20px auto 65px;
+}
+
+.form-card {
+  background: var(--panel);
+  border: 1px solid #2b3b50;
+  border-radius: 18px;
+  padding: clamp(20px, 5vw, 38px);
+  box-shadow: 0 20px 60px #0005;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.form-title h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.form-title p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.group { margin-bottom: 19px; }
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 9px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #394b62;
+  background: #0e1725;
+  color: white;
+  border-radius: 9px;
+  font-size: 14px;
+  outline: none;
+  transition: .2s;
+}
+
+input:focus {
+  border-color: #e51c2a;
+  box-shadow: 0 0 0 3px #e51c2a20;
+}
+
+input::placeholder { color: #718096; }
+
+.hint {
+  display: block;
+  font-size: 11px;
+  color: #8999ad;
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
+.password-wrap { position: relative; }
+
+.password-wrap input { padding-right: 65px; }
+
+.show-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #ff6470;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.consent {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  margin: 24px 0;
+  color: #b9c6d7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.consent input {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: var(--red);
+  flex-shrink: 0;
+}
+
+.consent a {
+  color: #ff6872;
+}
+
+.submit {
+  width: 100%;
+  padding: 17px;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(110deg, #b90f20, #f02a39);
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.submit:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.submit:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.security {
+  margin-top: 18px;
+  text-align: center;
+  color: #8494a9;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+#result {
+  display: none;
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #143b2c;
+  border: 1px solid #247b53;
+  color: #b5f5d2;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+footer {
+  background: #101827;
+  border-top: 1px solid #29374a;
+  text-align: center;
+  padding: 30px 15px;
+  color: #8494a9;
+  font-size: 12px;
+  line-height: 2;
+}
+
+footer strong { color: white; }
+
+@media(max-width: 500px) {
+  header { padding: 15px 5%; }
+  .stats { gap: 8px; }
+  .stat { min-width: 125px; padding: 14px; }
+  .hero { padding-top: 35px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <div class="brand">TEC PLAZA <span>STUDIO</span></div>
+    <div class="studio">GAME DEVELOPMENT</div>
+  </div>
+  <a href="#cadastro">INSCREVER-SE ↓</a>
+</header>
+
+<section class="hero">
+
+  <img src="Novo_Projeto.webp"
+       alt="Miraculous Strong Fighter"
+       class="logo">
+
+  <div>
+    <span class="tag">EARLY ACCESS PROGRAM</span>
+  </div>
+
+  <h1>O COMBATE ESTÁ <span>CHEGANDO!</span></h1>
+
+  <p>
+    Prepare-se para conhecer Miraculous Strong Fighter!
+    A Tec Plaza Studio está preparando uma experiência especial
+    e você poderá fazer parte dela antes do lançamento oficial.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <strong>100</strong>
+      <small>Vagas para acesso antecipado</small>
+    </div>
+
+    <div class="stat">
+      <strong>MSF</strong>
+      <small>Miraculous Strong Fighter</small>
+    </div>
+
+    <div class="stat">
+      <strong>2027</strong>
+      <small>Ano previsto de lançamento</small>
+    </div>
+  </div>
+
+</section>
+
+<main id="cadastro">
+
+  <section class="form-card">
+
+    <div class="form-title">
+      <h2>Faça seu cadastro</h2>
+      <p>
+        Preencha seus dados para participar do sorteio
+        das 100 vagas de acesso antecipado ao MSF.
+      </p>
+    </div>
+
+    <form id="registration">
+
+      <div class="group">
+        <label for="fullname">Nome completo *</label>
+        <input id="fullname" name="fullname"
+          type="text" placeholder="Digite seu nome completo"
+          autocomplete="name" required minlength="5">
+      </div>
+
+      <div class="group">
+        <label for="phone">Número de telefone *</label>
+        <input id="phone" name="phone"
+          type="tel" placeholder="(00) 00000-0000"
+          autocomplete="tel" required>
+      </div>
+
+      <div class="group">
+        <label for="email">Endereço de e-mail *</label>
+        <input id="email" name="email"
+          type="email" placeholder="seuemail@exemplo.com"
+          autocomplete="email" required>
+      </div>
+
+      <div class="group">
+        <label for="cpf">CPF *</label>
+        <input id="cpf" name="cpf"
+          type="text" inputmode="numeric"
+          placeholder="000.000.000-00"
+          maxlength="14" required>
+      </div>
+
+      <div class="group">
+        <label for="password">Crie sua senha MSF *</label>
+
+        <div class="password-wrap">
+          <input id="password" name="password"
+            type="password"
+            placeholder="Crie uma senha exclusiva"
+            autocomplete="new-password"
+            minlength="10" required>
+
+          <button class="show-password" type="button"
+            onclick="togglePassword('password', this)">
+            Mostrar
+          </button>
+        </div>
+
+        <small class="hint">
+          Crie uma senha exclusiva para sua conta MSF.
+          Nunca utilize a senha do seu e-mail.
+          Mínimo de 10 caracteres.
+        </small>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">
+          Confirmo que meus dados estão corretos e concordo
+          com o tratamento dos meus dados pessoais para
+          participação no processo de inscrição e sorteio,
+          conforme a Política de Privacidade.
+        </label>
+      </div>
+
+      <button class="submit" type="submit">
+        PARTICIPAR DO SORTEIO
+      </button>
+
+      <div id="result" role="status"></div>
+
+      <div class="security">
+        🔒 Seus dados devem ser protegidos e utilizados
+        exclusivamente para as finalidades informadas.
+        <br>
+        Inscrição sujeita às regras oficiais do sorteio.
+      </div>
+
+    </form>
+  </section>
+</main>
+
+<footer>
+  <strong>TEC PLAZA STUDIO</strong>
+  <br>
+  Desenvolvedora de Miraculous Strong Fighter (MSF).
+  <br>
+  © 2026 Tec Plaza Studio. Todos os direitos reservados.
+</footer>
+
+<script>
+
+// Máscara de telefone
+document.getElementById("phone").addEventListener("input", function() {
+  let v = this.value.replace(/\D/g, "").slice(0, 11);
+
+  if (v.length > 10) {
+    v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+  } else if (v.length > 6) {
+    v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+  } else if (v.length > 2) {
+    v = v.replace(/^(\d{2})(\d+)/, "($1) $2");
+  }
+
+  this.value = v;
+});
+
+// Máscara de CPF
+document.getElementById("cpf").addEventListener("input", function() {
+  let v = this.value.replace(/\D/g, "").slice(0, 11);
+
+  v = v.replace(/(\d{3})(\d)/, "$1.$2");
+  v = v.replace(/(\d{3})(\d)/, "$1.$2");
+  v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+  this.value = v;
+});
+
+// Validação do CPF
+function validCPF(cpf) {
+  cpf = cpf.replace(/\D/g, "");
+
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+    return false;
+  }
+
+  let sum = 0;
+
+  for (let i = 0; i < 9; i++) {
+    sum += Number(cpf[i]) * (10 - i);
+  }
+
+  let digit = (sum * 10) % 11;
+  if (digit === 10) digit = 0;
+
+  if (digit !== Number(cpf[9])) return false;
+
+  sum = 0;
+
+  for (let i = 0; i < 10; i++) {
+    sum += Number(cpf[i]) * (11 - i);
+  }
+
+  digit = (sum * 10) % 11;
+  if (digit === 10) digit = 0;
+
+  return digit === Number(cpf[10]);
+}
+
+// Mostrar e esconder senha
+function togglePassword(id, button) {
+  const field = document.getElementById(id);
+
+  if (field.type === "password") {
+    field.type = "text";
+    button.textContent = "Ocultar";
+  } else {
+    field.type = "password";
+    button.textContent = "Mostrar";
+  }
+}
+
+// Cadastro demonstrativo
+document.getElementById("registration")
+.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const cpf = document.getElementById("cpf").value;
+
+  if (!validCPF(cpf)) {
+    alert("Por favor, informe um CPF válido.");
+    return;
+  }
+
+  const password = document.getElementById("password").value;
+
+  if (password.length < 10) {
+    alert("Sua senha MSF precisa ter pelo menos 10 caracteres.");
+    return;
+  }
+
+  const result = document.getElementById("result");
+
+  result.style.display = "block";
+
+  result.innerHTML =
+    "<strong>Interface de cadastro funcionando!</strong><br>" +
+    "Esta é uma versão demonstrativa. Seus dados ainda não " +
+    "foram enviados ou registrados em um servidor. " +
+    "A inscrição somente será efetivada após a integração " +
+    "com o sistema oficial de cadastro.";
+
+  result.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+</script>
+
+</body>
+</html>
